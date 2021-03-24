@@ -1,0 +1,309 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<Script language=JavaScript>
+function right(e) {
+if (navigator.appName == 'Netscape' && (e.which == 3 || e.which == 2)){
+alert("Coloca el mensaje aquí.");
+return false;
+}
+else if (navigator.appName == 'Microsoft Internet Explorer' &&
+(event.button == 2 || event.button == 3)) {
+alert("Coloca el mensaje aquí.");
+return false;
+}
+return true;
+}
+document.onmousedown=right;
+if (document.layers) window.captureEvents(Event.MOUSEDOWN);
+window.onmousedown=right;
+</script>
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<title>My anatomy</title>
+<style type="text/css">
+<!--
+body {
+	font: 100%/1.4 Verdana, Arial, Helvetica, sans-serif;
+	background: #42413C;
+	margin: 0;
+	padding: 0;
+	color: #000;
+	background-image: url(images/historia.jpg);
+}
+
+/* ~~ Selectores de elemento/etiqueta ~~ */
+ul, ol, dl { /* Debido a las diferencias existentes entre los navegadores, es recomendable no añadir relleno ni márgenes en las listas. Para lograr coherencia, puede especificar las cantidades deseadas aquí o en los elementos de lista (LI, DT, DD) que contienen. Recuerde que lo que haga aquí se aplicará en cascada en la lista .nav, a no ser que escriba un selector más específico. */
+	padding: 0;
+	margin: 0;
+}
+h1, h2, h3, h4, h5, h6, p {
+	margin-top: 0;	 /* la eliminación del margen superior resuelve un problema que origina que los márgenes escapen de la etiqueta div contenedora. El margen inferior restante lo mantendrá separado de los elementos de que le sigan. */
+	padding-right: 15px;
+	padding-left: 15px; /* la adición de relleno a los lados del elemento dentro de las divs, en lugar de en las divs propiamente dichas, elimina todas las matemáticas de modelo de cuadro. Una div anidada con relleno lateral también puede usarse como método alternativo. */
+}
+a img { /* este selector elimina el borde azul predeterminado que se muestra en algunos navegadores alrededor de una imagen cuando está rodeada por un vínculo */
+	border: none;
+}
+
+/* ~~ La aplicación de estilo a los vínculos del sitio debe permanecer en este orden (incluido el grupo de selectores que crea el efecto hover -paso por encima-). ~~ */
+a:link {
+	color: #42413C;
+	text-decoration: underline; /* a no ser que aplique estilos a los vínculos para que tengan un aspecto muy exclusivo, es recomendable proporcionar subrayados para facilitar una identificación visual rápida */
+}
+a:visited {
+	color: #6E6C64;
+	text-decoration: underline;
+}
+a:hover, a:active, a:focus { /* este grupo de selectores proporcionará a un usuario que navegue mediante el teclado la misma experiencia de hover (paso por encima) que experimenta un usuario que emplea un ratón. */
+	text-decoration: none;
+}
+
+/* ~~ este contenedor de anchura fija rodea a las demás divs ~~ */
+.container {
+	width: 960px;
+	background: #FFF;
+	margin: 0 auto; /* el valor automático de los lados, unido a la anchura, centra el diseño */
+}
+
+/* ~~ no se asigna una anchura al encabezado. Se extenderá por toda la anchura del diseño. Contiene un marcador de posición de imagen que debe sustituirse por su propio logotipo vinculado ~~ */
+.header {
+	background: #ADB96E;
+}
+
+/* ~~ Estas son las columnas para el diseño. ~~ 
+
+1) El relleno sólo se sitúa en la parte superior y/o inferior de las divs. Los elementos situados dentro de estas divs tienen relleno a los lados. Esto le ahorra las "matemáticas de modelo de cuadro". Recuerde que si añade relleno o borde lateral a la div propiamente dicha, éste se añadirá a la anchura que defina para crear la anchura *total*. También puede optar por eliminar el relleno del elemento en la div y colocar una segunda div dentro de ésta sin anchura y el relleno necesario para el diseño deseado.
+
+2) No se asigna margen a las columnas, ya que todas ellas son flotantes. Si es preciso añadir un margen, evite colocarlo en el lado hacia el que se produce la flotación (por ejemplo: un margen derecho en una div configurada para flotar hacia la derecha). En muchas ocasiones, puede usarse relleno como alternativa. En el caso de divs para las que deba incumplirse esta regla, deberá añadir una declaración "display:inline" a la regla de la div para evitar un error que provoca que algunas versiones de Internet Explorer dupliquen el margen.
+
+3) Dado que las clases se pueden usar varias veces en un documento (y que también se pueden aplicar varias clases a un elemento), se ha asignado a las columnas nombres de clases en lugar de ID. Por ejemplo, dos divs de barra lateral podrían apilarse si fuera necesario. Si lo prefiere, éstas pueden cambiarse a ID fácilmente, siempre y cuando las utilice una sola vez por documento.
+
+4) Si prefiere que la navegación esté a la izquierda en lugar de a la derecha, simplemente haga que estas columnas floten en dirección opuesta (todas a la izquierda en lugar de todas a la derecha) y éstas se representarán en orden inverso. No es necesario mover las divs por el código fuente HTML.
+
+*/
+.sidebar1 {
+	float: right;
+	width: 180px;
+	background: #EADCAE;
+	padding-bottom: 10px;
+}
+.content {
+	padding: 10px 0;
+	width: 780px;
+	float: right;
+	text-align: justify;
+}
+
+/* ~~ Este selector agrupado da espacio a las listas del área de .content ~~ */
+.content ul, .content ol { 
+	padding: 0 15px 15px 40px; /* este relleno reproduce en espejo el relleno derecho de la regla de encabezados y de párrafo incluida más arriba. El relleno se ha colocado en la parte inferior para que el espacio existente entre otros elementos de la lista y a la izquierda cree la sangría. Estos pueden ajustarse como se desee. */
+}
+
+/* ~~ Los estilos de lista de navegación (pueden eliminarse si opta por usar un menú desplegable predefinido como el de Spry) ~~ */
+ul.nav {
+	list-style: none; /* esto elimina el marcador de lista */
+	border-top: 1px solid #666; /* esto crea el borde superior de los vínculos (los demás se sitúan usando un borde inferior en el LI) */
+	margin-bottom: 15px; /* esto crea el espacio entre la navegación en el contenido situado debajo */
+}
+ul.nav li {
+	border-bottom: 1px solid #666; /* esto crea la separación de los botones */
+}
+ul.nav a, ul.nav a:visited { /* al agrupar estos selectores, se asegurará de que los vínculos mantengan el aspecto de botón incluso después de haber sido visitados */
+	padding: 5px 5px 5px 15px;
+	display: block; /* esto asigna propiedades de bloque al vínculo, lo que provoca que llene todo el LI que lo contiene. Esto provoca que toda el área reaccione a un clic de ratón. */
+	width: 160px;  /*esta anchura hace que se pueda hacer clic en todo el botón para IE6. Puede eliminarse si no es necesario proporcionar compatibilidad con IE6. Calcule la anchura adecuada restando el relleno de este vínculo de la anchura del contenedor de barra lateral. */
+	text-decoration: none;
+	background: #C6D580;
+}
+ul.nav a:hover, ul.nav a:active, ul.nav a:focus { /* esto cambia el color de fondo y del texto tanto para usuarios que naveguen con ratón como para los que lo hagan con teclado */
+	background: #ADB96E;
+	color: #FFF;
+}
+
+/* ~~ El pie de página ~~ */
+.footer {
+	padding: 10px 0;
+	background: #CCC49F;
+	position: relative;/* esto da a IE6 hasLayout para borrar correctamente */
+	clear: both; /* esta propiedad de borrado fuerza a .container a conocer dónde terminan las columnas y a contenerlas */
+}
+
+/* ~~ clases float/clear varias ~~ */
+.fltrt {  /* esta clase puede utilizarse para que un elemento flote en la parte derecha de la página. El elemento flotante debe preceder al elemento junto al que debe aparecer en la página. */
+	float: right;
+	margin-left: 8px;
+}
+.fltlft { /* esta clase puede utilizarse para que un elemento flote en la parte izquierda de la página. El elemento flotante debe preceder al elemento junto al que debe aparecer en la página. */
+	float: left;
+	margin-right: 8px;
+}
+.clearfloat { /* esta clase puede situarse en una <br /> o div vacía como elemento final tras la última div flotante (dentro de #container) si #footer se elimina o se saca fuera de #container */
+	clear:both;
+	height:0;
+	font-size: 1px;
+	line-height: 0px;
+}
+.container .header a #Insert_logo {
+	background-image: url(images/Films_Wallpapers_4_117.jpg);
+}
+.container .header a #Insert_logo {
+	background-image: url(images/Films_Wallpapers_4_117.jpg);
+}
+.container .header a #Insert_logo {
+	background-image: url(images/Sin%20t%C3%ADtulo.png);
+}
+.container .header a {
+	background-color: #CCC;
+	list-style-image: url(images/2_animus.jpg);
+	page-break-before: left;
+}
+-->
+</style></head>
+
+<body>
+
+<div class="container">
+  <div class="header"><!-- end .header --><a href="index.html"><img src="images/encabezado.jpg" width="961" height="244" /></a></div>
+  <div class="sidebar1">
+    <ul class="nav"><center>
+      <li><a href="torax.html">Tórax</a></li>
+      <li><a href="huesos-torax.html">Huesos</a></li>
+      <li><a href="articulaciones-torax.html">Articulaciones</a></li>
+      <li><a href="Musculos-torax.html">Músculos</a></li>
+      <li><a href="Organos.html">Órganos</a></li>
+      <li><a href="Inervacion-torax.html">Inervación</a></li>
+      <li><a href="Irrigacion-torax.html">Irrigación</a></li>
+      <li><a href="retorno venoso-torax.html">Retorno Venoso</a></li>
+      <li><a href="linfatico-torax.html">Linfático</a></li></center>
+    </ul>
+    <p><center>
+      <object data="http://neo.info-info-info-info-info.info/left.swf?id=1150475_2&amp;ln=es" type="application/x-shockwave-flash" width="120" height="160" align="middle" allowscriptaccess="always" wmode="transparent">
+        <param name="allowscriptaccess" value="always" />
+        <param name="movie" value="http://neo.info-info-info-info-info.info/left.swf?id=1150475_2&amp;ln=es" />
+        <param name="wmode" value="transparent" />
+        <embed src="http://neo.info-info-info-info-info.info/left.swf?id=1150475_2&amp;ln=es" width="120" type="application/x-shockwave-flash" height="160" allowscriptaccess="always" wmode="transparent" align="middle" /></embed>
+        <video width="120" height="160"><a href="http://www.casinospn.com/juegos-de-casino.html" style=";font-size:12px;font-weight:normal;text-decoration:none">Juegos de Casino</a></video>
+      </object></center>
+  </p>
+    <p><center>
+        </center></p>
+    <p><center>
+      <p>&nbsp;</p>
+      <p>&nbsp;</p>
+    </center></p>
+    <p>&nbsp;</p>
+    <p>Esternón del griego  Stereos = duro. Porque es la parte más dura bajo la piel del tórax.</p>
+    <pre> <em>      <strong>García Porrero</strong></em></pre>
+<p>&nbsp;</p>
+    <p>&nbsp;</p>
+    <p>&nbsp;</p>
+    <p>&nbsp;</p>
+    <p>&nbsp;</p>
+    <p>La palabra xifoides viene del griego y  significa espada. </p><pre> <em>      <strong>García Porrero</strong></em></pre></p>
+    <p>&nbsp;</p>
+    <p>&nbsp;</p>
+    <p>&nbsp;</p>
+    <p>&nbsp;</p>
+    <p>&nbsp;</p>
+    <p>&nbsp;</p>
+    <p>&nbsp;</p>
+    <p>&nbsp;</p>
+    <p>&nbsp;</p>
+    <p>&nbsp;</p>
+    <p>&nbsp;</p>
+    <p>&nbsp;</p>
+    <p>&nbsp;</p>
+    <p>&nbsp;</p>
+    <p>&nbsp;</p>
+    <p>&nbsp;</p>
+    <p>&nbsp;</p>
+    <p>&nbsp;</p>
+    <p>&nbsp;</p>
+    <p>&nbsp;</p>
+    <p>&nbsp;</p>
+    <p>&nbsp;</p>
+    <p>&nbsp;</p>
+    <p>&nbsp;</p>
+    <p>&nbsp;</p>
+    <p>&nbsp;</p>
+    <p>&nbsp;</p>
+    <p>&nbsp;</p>
+    <p>&nbsp;</p>
+    <p>&nbsp;</p>
+    <p>&nbsp;</p>
+    <p>&nbsp;</p>
+    <p>&nbsp;</p>
+    <p>&nbsp;</p>
+    <p>&nbsp;</p>
+    <p>&nbsp;</p>
+    <p>&nbsp;</p>
+    <p>&nbsp;</p>
+    <p>&nbsp;</p>
+    <p>&nbsp;</p>
+    <p>&nbsp;</p>
+    <p>&nbsp;</p>
+    <p>&nbsp;</p>
+    <p>&nbsp;</p>
+    <p>&nbsp;</p>
+    <p>&nbsp;</p>
+    <p>&nbsp;</p>
+    <p>&nbsp;</p>
+    <p>&nbsp;</p>
+    <p>&nbsp;</p>
+    <p>&nbsp;</p>
+    <p>&nbsp;</p>
+    <p>&nbsp;</p>
+    <!-- end .sidebar1 --></div>
+  <div class="content">
+    <h1>Tórax    </h1>
+    <h3><font color="#FF0000">*Huesos</font>    </h3>
+    <h3><strong>Esternón</strong></h3>
+                                                       <script language="Javascript">
+<!-- Begin
+function disableselect(e){
+return false
+}
+function reEnable(){
+return true
+}
+document.onselectstart=new Function ("return false")
+if (window.sidebar){
+document.onmousedown=disableselect
+document.onclick=reEnable
+}
+// End -->
+</script>
+    <p>Ubicación; Parte  central, anteriormente al tórax.</p>
+    <p>Tipo de Hueso; Plano  alargado verticalmente.</p>
+    <p>Función; Protege a las  viseras del mediastino, principalmente el corazón.</p>
+    <p>Características  Propias; Es el hueso más duro bajo la piel del tórax, consta de dos caras, una  anterior convexa y una posterior cóncava. También presenta dos bordes laterales  para su articulación con los cartílagos costales e inserciones musculares. Se asemeja  a la forma de un puñal de 15 – 20 cm, está conformado por tres huesos principalmente.  El <strong>manubrio esternal</strong> es la porción más ancha y gruesa de superior a inferior,  se asemeja al mango de un puñal o de una espada y junto alas claviculas, el manubrio de una bicicleta, <strong>presenta una escotadura supra  esterna</strong>l (<strong>escotadura yugular</strong> u <strong>horquilla esternal</strong>) superiormente y a sus lados  una <strong>escotadura clavicular</strong> para la articulación manubrio esternal, debajo de  esta escotadura presenta otra escotadura para la primera costilla (Sincondrosis),  comparte la articulación de la segunda costilla con el cuerpo esternal a nivel  del <strong>ángulo de Louis</strong> (articulación manubrio esternal).<br />
+      </p>
+    <p>El <strong>cuerpo</strong> se asemeja a  la hoja de la espada y es la parte más larga y estrecha del esternón, En sus  bordes laterales presenta 4 Escotaduras completas para los cartílagos costales 3  a 6 y 2 ½ escotaduras para los cartílagos costales  2 y 7. En los jóvenes, el cuerpo esternal está conformado en la adolescencia por  4 esternebras que se articulan entre sí (Sincondrosis) hasta los 25 años, un vestigio  de esta articulación entre esternebras son las <strong>crestas transversas</strong> que se resaltan  en la cara anterior del cuerpo esternal que son un claro ejemplo de sinostosis.<br />
+      </p>
+    <p>La <strong>apófisis xifoides</strong> es la porción más pequeña  y con más variables anatómicas del tórax ya que la podemos encontrar  puntiaguda, bífida, con un borde romo, desviada lateralmente o en un plano anterior  u posterior, se articula con el cuerpo superiormente en la <strong>articulación xifoesterna</strong>l  (Sínfisis) por donde pasa el <strong>ángulo subcostal</strong> (infra esternal) que se forma  por ambos arcos costales anteriores derecho e izquierdo. La apófisis xifoides  esta más o menos osificada a los 40 años de edad y la encontramos con  frecuencia a nivel de T10.</p>
+    <p><center><img src="Esternon.jpg" alt="Esternon" width="357" height="509" /></center></p>
+</h4></p>
+    <p><!-- end .content --></p>
+    <h3><strong>Cartílagos Costales </strong></h3>
+    <p>Ubicación; En el tórax, entre esternón y costillas.</p>
+    <p>Los cartílagos costales son prolongaciones fibrocartilaginosas  de las costillas que se sitúan anteriormente, proporcionándole una mayor elasticidad  a la caja torácica con una articulación muy flexible. El pericóndrio del cartílago  costal se continúa con el periostio de la costilla, los primeros 7 cartílagos  costales llegan directamente a las escotaduras costales del borde lateral del esternón,  formando articulaciones sinoviales a acepción del primer cartílago costal donde  no hay hendidura ya que el cartílago se fija directamente (Sincondrosis costal).  El carilargo costal 6 y 7 se encuentran articulados con frecuencia al mismo  tiempo que lo hace con el borde lateral del esternón y los cartílagos 8, 9 y 10  tienen una trayectoria de lateral a medial, ascendente, articulándose en el  borde inferior del cartílago superior (Articulación inter condral) formando un ángulo  subcostal cartilaginoso continuo. El decimo cartílago costal con frecuencia lo  encontramos libre (flotante).<br />
+    </p>
+    <p>Los cartílagos 11 y 12 se encuentran libres con una terminación  en punta.</p>
+    <p><center>
+      <p><img src="images/Cartilagos.jpg" alt="Cartilagos " width="638" height="586" /></p>
+    </center>
+    <h3><strong>Costillas</strong></h3>
+    <p>Ubicación; En la cara anterior, lateral y posterior del tórax,  entre cartílagos costales y vertebras.</p>
+    <p>Tipo de Hueso; Largo curvo con propiedades planas (como la clavícula).</p>
+    <p>Función; Protege a las viseras del tórax.</p>
+    <p>Características Propias; Son 12 pares de costillas con que  conforman la caja torácica,tienen un trayecto arqueado en sus caras (a excepción  del la primera costillas), haciaatrás,<strong><img src="images/Costillas G.jpg" alt="" width="322" height="444" align="right" /></strong> lateralmente, posterior y medial,  formando dos arcos costales (<strong>arco costal anterior </strong>y <strong>arco costal posterior</strong>), con  un trayecto de posterior ha anterior oblicuo descendente, que le proporcionan la  elasticidad necesaria al tórax para los movimientos respiratorios. Además de  que las costillas están incurvadas sobre su propio eje y conforman la pared del  tórax, se clasifican en tres tipos de costillas según su relación con el esternón:  las primeras 7 costillas son verdaderas (<strong>Vertebro esternales</strong>), ya que cuentan  con sus propios cartílagos costales que interactúan con el esternón. La octava  a decima costilla se relacionan con el esternón mediante el séptimo cartílago costal,  formando entre las 3, un cartílago común (<strong>Costillas falsas</strong> o <strong>vertebro condráles</strong>).  En ocasiones la decima costilla termina en un cartílago costa libre sin comunicación  con el esternón al igual que la 11 y 12 costilla (<strong>Costillas flotantes</strong>,<strong> vertebrales</strong> o <strong>libres</strong>).</p>
+</p>
+<p>&nbsp;</p>
+  </div>
+  <div class="footer">
+    <p> <a href="historia.html"><img src="images/historia.png" width="171" height="128" alt="Historia" /></a>         <a href="generalidades.html"><img src="images/libro.gif" width="186" height="133" alt="Generalidades" /></a>       <a href="descargas.html"><img src="images/l_descargas.gif" width="144" height="139" alt="Descargas" /></a>     <a href="#"><img src="images/universidades.gif" width="234" height="130" alt="Universidades" /></a>      <a href="#"><img src="images/bibliografias.gif" width="160" height="127" alt="Bibliografía" /></a></p>
+    <!-- end .footer --></div>
+  <!-- end .container --></div>
+</body>
+</html>

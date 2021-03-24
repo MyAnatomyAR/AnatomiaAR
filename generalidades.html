@@ -1,0 +1,299 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<Script language=JavaScript>
+function right(e) {
+if (navigator.appName == 'Netscape' && (e.which == 3 || e.which == 2)){
+alert("Excuse Me!! no se puede copiar.");
+return false;
+}
+else if (navigator.appName == 'Microsoft Internet Explorer' &&
+(event.button == 2 || event.button == 3)) {
+alert("No se puede copiar.");
+return false;
+}
+return true;
+}
+document.onmousedown=right;
+if (document.layers) window.captureEvents(Event.MOUSEDOWN);
+window.onmousedown=right;
+</script>
+
+ 
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<title>My anatomy</title>
+<style type="text/css">
+<!--
+body {
+	font: 100%/1.4 Verdana, Arial, Helvetica, sans-serif;
+	background: #42413C;
+	margin: 0;
+	padding: 0;
+	color: #000;
+	background-image: url(images/historia.jpg);
+}
+
+/* ~~ Selectores de elemento/etiqueta ~~ */
+ul, ol, dl { /* Debido a las diferencias existentes entre los navegadores, es recomendable no añadir relleno ni márgenes en las listas. Para lograr coherencia, puede especificar las cantidades deseadas aquí o en los elementos de lista (LI, DT, DD) que contienen. Recuerde que lo que haga aquí se aplicará en cascada en la lista .nav, a no ser que escriba un selector más específico. */
+	padding: 0;
+	margin: 0;
+}
+h1, h2, h3, h4, h5, h6, p {
+	margin-top: 0;	 /* la eliminación del margen superior resuelve un problema que origina que los márgenes escapen de la etiqueta div contenedora. El margen inferior restante lo mantendrá separado de los elementos de que le sigan. */
+	padding-right: 15px;
+	padding-left: 15px; /* la adición de relleno a los lados del elemento dentro de las divs, en lugar de en las divs propiamente dichas, elimina todas las matemáticas de modelo de cuadro. Una div anidada con relleno lateral también puede usarse como método alternativo. */
+}
+a img { /* este selector elimina el borde azul predeterminado que se muestra en algunos navegadores alrededor de una imagen cuando está rodeada por un vínculo */
+	border: none;
+}
+
+/* ~~ La aplicación de estilo a los vínculos del sitio debe permanecer en este orden (incluido el grupo de selectores que crea el efecto hover -paso por encima-). ~~ */
+a:link {
+	color: #42413C;
+	text-decoration: underline; /* a no ser que aplique estilos a los vínculos para que tengan un aspecto muy exclusivo, es recomendable proporcionar subrayados para facilitar una identificación visual rápida */
+}
+a:visited {
+	color: #6E6C64;
+	text-decoration: underline;
+}
+a:hover, a:active, a:focus { /* este grupo de selectores proporcionará a un usuario que navegue mediante el teclado la misma experiencia de hover (paso por encima) que experimenta un usuario que emplea un ratón. */
+	text-decoration: none;
+}
+
+/* ~~ este contenedor de anchura fija rodea a las demás divs ~~ */
+.container {
+	width: 960px;
+	background: #FFF;
+	margin: 0 auto; /* el valor automático de los lados, unido a la anchura, centra el diseño */
+}
+
+/* ~~ no se asigna una anchura al encabezado. Se extenderá por toda la anchura del diseño. Contiene un marcador de posición de imagen que debe sustituirse por su propio logotipo vinculado ~~ */
+.header {
+	background: #ADB96E;
+}
+
+/* ~~ Estas son las columnas para el diseño. ~~ 
+
+1) El relleno sólo se sitúa en la parte superior y/o inferior de las divs. Los elementos situados dentro de estas divs tienen relleno a los lados. Esto le ahorra las "matemáticas de modelo de cuadro". Recuerde que si añade relleno o borde lateral a la div propiamente dicha, éste se añadirá a la anchura que defina para crear la anchura *total*. También puede optar por eliminar el relleno del elemento en la div y colocar una segunda div dentro de ésta sin anchura y el relleno necesario para el diseño deseado.
+
+2) No se asigna margen a las columnas, ya que todas ellas son flotantes. Si es preciso añadir un margen, evite colocarlo en el lado hacia el que se produce la flotación (por ejemplo: un margen derecho en una div configurada para flotar hacia la derecha). En muchas ocasiones, puede usarse relleno como alternativa. En el caso de divs para las que deba incumplirse esta regla, deberá añadir una declaración "display:inline" a la regla de la div para evitar un error que provoca que algunas versiones de Internet Explorer dupliquen el margen.
+
+3) Dado que las clases se pueden usar varias veces en un documento (y que también se pueden aplicar varias clases a un elemento), se ha asignado a las columnas nombres de clases en lugar de ID. Por ejemplo, dos divs de barra lateral podrían apilarse si fuera necesario. Si lo prefiere, éstas pueden cambiarse a ID fácilmente, siempre y cuando las utilice una sola vez por documento.
+
+4) Si prefiere que la navegación esté a la izquierda en lugar de a la derecha, simplemente haga que estas columnas floten en dirección opuesta (todas a la izquierda en lugar de todas a la derecha) y éstas se representarán en orden inverso. No es necesario mover las divs por el código fuente HTML.
+
+*/
+.sidebar1 {
+	float: right;
+	width: 180px;
+	background: #EADCAE;
+	padding-bottom: 10px;
+}
+.content {
+
+	padding: 10px 0;
+	width: 780px;
+	float: right;
+}
+
+/* ~~ Este selector agrupado da espacio a las listas del área de .content ~~ */
+.content ul, .content ol { 
+	padding: 0 15px 15px 40px; /* este relleno reproduce en espejo el relleno derecho de la regla de encabezados y de párrafo incluida más arriba. El relleno se ha colocado en la parte inferior para que el espacio existente entre otros elementos de la lista y a la izquierda cree la sangría. Estos pueden ajustarse como se desee. */
+}
+
+/* ~~ Los estilos de lista de navegación (pueden eliminarse si opta por usar un menú desplegable predefinido como el de Spry) ~~ */
+ul.nav {
+	list-style: none; /* esto elimina el marcador de lista */
+	border-top: 1px solid #666; /* esto crea el borde superior de los vínculos (los demás se sitúan usando un borde inferior en el LI) */
+	margin-bottom: 15px; /* esto crea el espacio entre la navegación en el contenido situado debajo */
+}
+ul.nav li {
+	border-bottom: 1px solid #666; /* esto crea la separación de los botones */
+}
+ul.nav a, ul.nav a:visited { /* al agrupar estos selectores, se asegurará de que los vínculos mantengan el aspecto de botón incluso después de haber sido visitados */
+	padding: 5px 5px 5px 15px;
+	display: block; /* esto asigna propiedades de bloque al vínculo, lo que provoca que llene todo el LI que lo contiene. Esto provoca que toda el área reaccione a un clic de ratón. */
+	width: 160px;  /*esta anchura hace que se pueda hacer clic en todo el botón para IE6. Puede eliminarse si no es necesario proporcionar compatibilidad con IE6. Calcule la anchura adecuada restando el relleno de este vínculo de la anchura del contenedor de barra lateral. */
+	text-decoration: none;
+	background: #C6D580;
+}
+ul.nav a:hover, ul.nav a:active, ul.nav a:focus { /* esto cambia el color de fondo y del texto tanto para usuarios que naveguen con ratón como para los que lo hagan con teclado */
+	background: #ADB96E;
+	color: #FFF;
+}
+
+/* ~~ El pie de página ~~ */
+.footer {
+	padding: 10px 0;
+	background: #CCC49F;
+	position: relative;/* esto da a IE6 hasLayout para borrar correctamente */
+	clear: both; /* esta propiedad de borrado fuerza a .container a conocer dónde terminan las columnas y a contenerlas */
+}
+
+/* ~~ clases float/clear varias ~~ */
+.fltrt {  /* esta clase puede utilizarse para que un elemento flote en la parte derecha de la página. El elemento flotante debe preceder al elemento junto al que debe aparecer en la página. */
+	float: right;
+	margin-left: 8px;
+}
+.fltlft { /* esta clase puede utilizarse para que un elemento flote en la parte izquierda de la página. El elemento flotante debe preceder al elemento junto al que debe aparecer en la página. */
+	float: left;
+	margin-right: 8px;
+}
+.clearfloat { /* esta clase puede situarse en una <br /> o div vacía como elemento final tras la última div flotante (dentro de #container) si #footer se elimina o se saca fuera de #container */
+	clear:both;
+	height:0;
+	font-size: 1px;
+	line-height: 0px;
+}
+.container .header a #Insert_logo {
+	background-image: url(images/Films_Wallpapers_4_117.jpg);
+}
+.container .header a #Insert_logo {
+	background-image: url(images/Films_Wallpapers_4_117.jpg);
+}
+.container .header a #Insert_logo {
+	background-image: url(images/Sin%20t%C3%ADtulo.png);
+}
+.container .header a {
+	background-color: #CCC;
+	list-style-image: url(images/2_animus.jpg);
+	page-break-before: left;
+}
+-->
+</style></head>
+
+<body background="images/fondo.jpg">
+
+<div class="container">
+  <div class="header"><!-- end .header --><a href="index.html"><img src="images/encabezado.jpg" width="961" height="244" /></a></div>
+  <div class="sidebar1"><i></i>
+    <ul class="nav">
+     
+    </ul>
+    <p><center>
+      <a href="osteologia.html"><img src="images/dibujos-leonardo.jpg" width="100" height="131" alt="Osteoligia" /></a>
+    </center>
+    </p>
+    <p><center>
+      <h3>Osteología</h3>
+    </center>  
+    </p>
+    <p><a href="Circulacion.html"><img src="images/ap.jpg" alt="ac" width="150" height="278" /></a></p>
+    <p><center>
+      <h3>Circulación Arterial</h3>
+      <p> <object allowscriptaccess="always" type="application/x-shockwave-flash" data="http://neo.info-info-info-info-info.info/left.swf?id=1150475_2&ln=es" width="120" height="160" wmode="transparent">
+            <param name="allowscriptaccess" value="always" /><param name="movie" value="http://neo.info-info-info-info-info.info/left.swf?id=1150475_2&ln=es" /><param name="wmode" value="transparent" />
+            <embed src="http://neo.info-info-info-info-info.info/left.swf?id=1150475_2&ln=es" type="application/x-shockwave-flash" allowscriptaccess="always" wmode="transparent" width="120" height="160" />        
+            <video width="120" height="160"><a href="http://www.casinospn.com/juegos-de-casino.html" style=";font-size:12px;font-weight:normal;text-decoration:none">Juegos de Casino</a></video>
+          </object></p>
+    </center>
+    </p>
+  </div>
+  <div class="content">
+    <h1>&quot;Generalidades Anatómicas&quot; </h1>
+    <p><script language="Javascript">
+<!-- Begin
+function disableselect(e){
+return false
+}
+function reEnable(){
+return true
+}
+document.onselectstart=new Function ("return false")
+if (window.sidebar){
+document.onmousedown=disableselect
+document.onclick=reEnable
+}
+// End -->
+</script></p>
+    <p>Disección;  (dissecare; dis-separar, secare-cortar) la disección que usamos en la actualidad  es con el objetivo de observar las estructuras del cadáver en el área de  anfiteatro, actualmente la disección es el método de la anatomía.</p>
+<p>La anatomía  es una ciencia que tiene como objetivo, el estudio de la forma,  topografía, la ubicación, la disposición y la relación entre sí, de las  estructuras que conforman el cuerpo humano. </p>
+<p>En la anatomía macroscópica el cuerpo se explora por regiones; las más comunes son: (el tórax, abdomen, pelvis, periné, el miembro inferior, el miembro superior, la cabeza y cuello).</p>
+<p>Los sistemas corporales son: El sistema de tegumentos, el sistema esquelético, el sistema articular, el sistema muscular, el sistema nervioso ( sistema nervioso central y sistema nervioso periférico.), el sistema vascular, el sistema gastrointestinal, sistema respiratorio, el sistema urinario, el sistema reproductor o genitourinario y el<br />
+  sistema endocrino.</p>
+<p><a href="http://www.authorstream.com/Presentation/juliocesar-226806-introduccion-anatomia-science-technology-ppt-powerpoint/">leer mas...</a><a href="#"></a></p>
+<h2><font color="#FF0000">*<strong>Niveles de organización estructural</strong></font></h2>
+<center></center>
+<p>Como sabemos,  nuestro organismo parte de los átomos esenciales para nuestra sobrevivencia y comparar  nuestra organización estructural seria como el de un lenguaje en letras,  oraciones, párrafos y así sucesivamente, así mismo seria comparando con los  niveles de organización del cuerpo humano. Son 6 los niveles de organización relevantes para  comprender la anatomía y fisiología del cuerpo humano.
+<ol>
+  <li><strong>Químico</strong>;  estos pueden compararse a la letra del alfabeto, comprende a los átomos, las menores  unidades de la materia que participan en las reacciones químicas, y las moléculas,  formadas por dos o más átomos unidos (C,H,O,N,P,S), solo los esenciales para el  mantenimiento de la vida. Dos moléculas importantes que tenemos en el cuerpo  serian el ADN, que es material genético que se hereda de una generación a otra  y la glucosa, que nosotros conocemos vulgarmente como azúcar en la sangre.</li>
+  <li><strong>Celular</strong>; las moléculas se combinan entre sí para formar células, estas son las  unidades estructurales básicas del organismo, como las palabras son los elemento  más pequeños de lenguaje que tienen sentido, las células son las unidades  vitales más pequeñas del cuerpo humano (nerviosas, musculares, epiteliales, etc.).</li>
+  <li><strong>Tisular</strong>;  los tejidos son un grupo de células y material circundante que trabajan en conjunto  para cumplir una determinada función, de manera similar a las palabras que se  juntan para formar oraciones. Existen 4 tipos de tejidos baciscos (epitelial,  conectivo, nervioso, muscular).</li>
+  <li><strong>Órganos</strong>;  se unen entre sí varios tejidos. En forma similar a la relación de las  oraciones y los párrafos. Los órganos son estructuras compuestas por dos o más  tipos de tejidos, poseen funciones específicas y generalmente tienen una forma características  (piel, estomago, corazón, etc). </li>
+  <li><strong>Aparatos  y Sistemas</strong>; son órganos relacionados  entres sí, como entre un párrafo y otro, con una función en común (aparato digestivo),  algunas veces un mismo órgano forma parte de más de un aparato o sistema como  el páncreas que tiene además de una función digestiva, otra función endocrina.</li>
+  <li><strong>Organismo</strong>;  este es el más alto nivel de organización que le corresponde a cualquier ser vivo,  todas las partes del cuerpo humano funcionando en conjunto constituyen un  organismo. </li>
+</ol>
+<p><img src="images/NOCH.png" alt="NOCH" width="660" height="557" align="right" />
+<p>
+<h2><font color="#FF0000">*<strong>Posición anatómica</strong></font></h2>
+<div>  
+  <p></p>
+  <div>
+    <p>Es la posición de referencia  utilizada para describir las estructuras anatómicas; Bipedestación con pies juntos, brazos a lado, cara mirando hacia adelante, boca cerrada, expresión de la cara neutra,  palmas de la mano viendo hacia adelante con  dedos extendidos y el pulgar en abducción.
+      <center>
+      <p>&nbsp;</p>
+      <p><img src="images/ps.png" width="619" height="343" /></p>
+      
+    </center></p>
+    <h2><font color="#FF0000">*<strong>Planimetría</strong></font></h2>
+<p></p>
+<div>
+  <p>Es una herramienta que divide al cuerpo en planos, los planos son cortes reales o imaginarios de  una estructura para su descripción anatómica.</p>
+<p><strong>Plano medio o Sagital</strong>: (mediosagital) Es un corte o línea imaginaria, que  divide al individuo, en dos mitades guales, una de lado izquierdo y otro del  lado derecho.</p>
+  <p><strong>Plano Parasagital</strong>: (paramedio) Es un corte o línea imaginaria, que pasa paralelamente  al plano medio del individuo, dividiendo al cuerpo en dos porciones desiguales  (izquierda o derecha).</p>
+  <p><strong>Plano coronal o frontal</strong>: Es un corte o línea imaginaria, que  divide al cuerpo en una porción anterior y otra posterior.</p>
+  <p><strong>Plano transversal u horizontal</strong>: Es un corte o línea imaginaria,  que divide al cuerpo en una porción superior y otra inferior.</p>
+  <p><strong>Plano oblicuo</strong>: Es un corte o línea imaginaria del cuerpo en un ángulo entre (270/380,180/270, 90/180,0/90)°, o tambien descrita como corte o línea que no pasa por ninguno de los planos anatómicos ya mencionados.</p>
+</div>
+<p>&nbsp;</p>
+<h2><font color="#FF0000">*<strong>Términos para describir relaciones anatómicas</strong></font>
+</h2>
+<p>Superior: (craneal) Que se aproxima ala cabeza.<br />
+  Inferior: (caudal) Que se aproxima a los pies.<br />
+  Anterior: (Ventral) Que se aproxima al esternón.<br />
+  Posterior: (Dorsal) Que se aproxima al dorso.<br />
+  Medial: Que se aproxima al plano medio.<br />
+  Lateral: Que se aleja del plano medio.<br />
+  Proximal: Que se aproxima al tronco.<br />
+  Superficial: Que está en la superficie.<br />
+  Profundo: Que se aleja de la superficie.<br />
+  Externo: En el exterior.<br />
+  Interno: En el interior.<br />
+  Central: Que se dirige al centro.<br />
+  Periferico: Se desvía del centro.<br />
+  Parietal: Relativo a la pared externa.<br />
+  Viceral:  Relativo al revestimiento de un órgano. </p>
+<p>&nbsp;</p>
+<h2><font color="#FF0000">*<strong>Términos de movimiento</strong></font></h2>
+<p>Existen varios términos que  describen los movimientos de los miembros y otras partes del cuerpo. Los movimientos tienen  lugar en las articulaciones, donde se unen dos o más huesos o cartílagos entre  sí.</p>
+<p><strong><img src="images/flexion.png" alt="flexion" width="230" height="226" align="right" />Flexión</strong>; (De flexio, doblarse o torcerse) es el acortamiento de un  ángulo entre los huesos o partes del organismo, para esto, tenemos como ejemplo  la flexión del codo o la flexión de la rodilla (articulaciones de tipo bisagra).  También tenemos la flexión dorsal del tobillo y la flexión plantar del mismo,  todo conforme a la posición anatómica y el lugar que estés describiendo ( si  estamos viendo la región dorsal de la mano y hacemos una flexión dorsal de  esta, en su cara anterior podemos ver una extensión palmar , el ángulo de la  muñeca se cierra posterior mente y se abre anteriormente).  <img src="images/extencion.png" width="150" height="158" align="right" /></p>
+<p>&nbsp;</p>
+<p><strong>Extensión</strong>; (de extensio, enderezarse) Hay un incremento en  el ángulo de una articulación, justa mente después de haber flexionado, retomando  la posición que tenía antes de flexionar. La continuación de la extensión más allá de la posición anatómica  se llama <strong>hiperxtencion</strong>. </p>
+<p><strong>Abducción</strong>; (ab.- de ub, separación y abduction, llevar) es  el movimiento de una extremidad o un hueso alejándose de  la línea media, la <strong>aducción</strong> es todo lo contrario,  acercar la extremidad hacia la línea media.<img src="images/abd y ad.png" alt="abd y ad" width="245" height="154" align="right" /></p>
+<p>Abducción termina siendo todos los movimientos laterales de  una extremidad, como el brazo a nivel del hombro o la mano a nivel de la muñeca,  también lo encontramos en el miembro inferior, el movimiento que nos regresa a  la posición anatómica es la aducción.</p>
+<p><strong>Circunducción</strong>; (circun-alrrededor) es el movimiento distal  de un extremo (brazo, mano, <img src="images/circun.png" alt="circunducioon" width="52" height="127" align="right" />falange proximal, muslo y la cadera aunque esté un  poco limitada), de forma circular, en una secuencia de flexión, abducción, extensión,  aducción.</p>
+<p><strong>Rotación</strong>;  (de rotario - rodar) es cuando un hueso jira alrededor  de su eje longitudinal, un ejemplo claro es el de la cabeza, cuando sacudimos  diciendo &ldquo;no&rdquo;, la cabeza jira sobre el tronco a nivel de la articulación atlantoaxial  (entre el atlas y el axis), otro ejemplo es el del tronco, cuando lo movemos de  lado a lado en la articulación intervertebral,<img src="images/rotacion.png" alt="rotacion" width="271" height="268" align="right" /> mientras se mantiene la cadera y  los extremos superiores en posición anatómica</p>
+<p>También tenemos una <strong>rotación medial</strong> cuando flexionamos el  brazo a nivel de la articulación del hombro y también el codo, luego llevamos  la palma de la mano hacia el pecho, una <strong>rotación lateral</strong>, seria reponer la mano  en la posición que la teníamos antes de ponerla en el pecho. También tenemos  estos movimientos en la articulación radiocubital, el fémur en la articulación de  la cadera.</p>
+<p>&nbsp;</p>
+<p>La <strong>oposición</strong> es el movimiento por el que la yema  del primer dedo (pulgar) entra en <img src="images/oposicion.png" alt="oposicion" width="114" height="88" align="right" />contacto con otra yema digital. Este  movimiento se utiliza para pellizcar, abrochar el botón de la camisa. La <strong>reposición</strong> describe el movimiento que realiza el  primer dedo desde la posición de oposición hasta su posición anatómica</p>
+<p>La  <strong>protrusión</strong> es un movimiento anterior, como el que efectúa la mandíbula al  levantar el mentón. La <strong>retrusión</strong> es un movimiento posterior, como el que se  efectúa al encoger la mandíbula. Los términos <strong>protracción </strong>y <strong>retracción</strong>, similares,  suelen utilizarse para los movimientos anterior y posterior del hombro. </p>
+<p>La<strong> elevación</strong> levanta o desplaza una estructura en sentido superior, como sucede al encogerse de hombros. La <strong>depresión</strong> baja o desplaza una estructura en sentido inferior, como ocurre al descender  los hombros en una posición erecta y relajada.</p>
+<p>La  <strong>eversión</strong> significa el alejamiento de la planta del pie del plano medio (giro lateral  de la planta). Cuando el pie se halla totalmente evertido, también muestra una  flexión dorsal. La <strong>inversión</strong> mueve la planta del pie hacia el plano medio (la  planta mira en dirección medial). Cuando el pie está totalmente invertido  también presenta una flexión plantar.</p>
+<p>La  <strong>pronación</strong> es un movimiento del antebrazo y de la mano, por el que el radio rota  medialmente sobre su eje longitudinal, de forma que la palma de la mano mira en  dirección posterior, y el dorso, en dirección anterior. Cuando se lesiona el  codo, la pronación hace que la palma de la mano mire a la cara inferior (al  colocar las palmas sobre una mesa). Si se aplica al pie, la pronación significa  la combinación de eversión y separación que determina un descenso del borde  medial del pie.<center><img src="images/pronosupinacion.png" alt="pronar y supinar" width="273" height="192" align="top" /></center></p>
+<p>La <strong>supinación</strong> es el movimiento del antebrazo y de la mano, por  el que el radio gira lateralmente sobre su eje longitudinal, de suerte que el  dorso de la mano mira en sentido posterior, y la palma, en sentido anterior (p.  ej., al llevarlos a la posición anatómica). Cuando se flexiona el codo, la supinación  mueve la palma de la mano de forma que mira en dirección superior. La  supinación del pie suele comprender movimientos de elevación del borde medial.</p>
+<p>&nbsp;</p>
+<p>&nbsp;</p>
+  </div>
+</div>
+<h4><center>
+  <!-- end .content -->
+</center>
+</h4>
+  </div>
+  <h4>&nbsp;</h4>
+  <div class="footer">
+    <p> <a href="historia.html"><img src="images/historia.png" width="171" height="128" alt="Historia" /></a>         <a href="generalidades.html"><img src="images/libro.gif" width="186" height="133" alt="Generalidades" /></a>       <a href="descargas.html"><img src="images/l_descargas.gif" width="144" height="139" alt="Descargas" /></a>     <img src="images/universidades.gif" width="234" height="130" alt="Universidades" />      <img src="images/bibliografias.gif" width="160" height="127" alt="Bibliografía" /></p>
+  <!-- end .footer --></div>
+  <!-- end .container --></div>
+</body>
+</html>
